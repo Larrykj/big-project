@@ -29,7 +29,7 @@ services:
     ports:
       - "5000:80"
     environment:
-      - ConnectionStrings__DefaultConnection=Server=mysql_db;Database=omnifinance;User=root;Password=root;
+      - ConnectionStrings__DefaultConnection=Server=mysql_db;Database=omnifinance;User=root;Password=${DB_PASSWORD:-changeme};
     depends_on:
       - mysql_db
     networks:
@@ -79,7 +79,7 @@ services:
     ports:
       - "3001:3000"
     environment:
-      - DATABASE_URL=mysql2://root:root@mysql_db:3306/omnivendor
+      - DATABASE_URL=mysql2://root:${DB_PASSWORD:-changeme}@mysql_db:3306/omnivendor
     depends_on:
       - mysql_db
     networks:
@@ -100,13 +100,13 @@ services:
   # =============================================================
   # INFRASTRUCTURE (Databases & Message Brokers)
   # =============================================================
-  
+
   # Relational Data (Users, Orders, Finance)
   mysql_db:
     image: mysql:8.0
     container_name: omni_mysql
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-changeme}
       MYSQL_DATABASE: omnidb
     ports:
       - "3307:3306" # Mapped to 3307 to avoid conflict with local MySQL
