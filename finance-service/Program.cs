@@ -42,6 +42,29 @@ app.MapPost("/api/mpesa/pay", async ([FromBody] PaymentRequest req, MpesaService
     }
 });
 
+app.MapPost("/api/mpesa/callback", ([FromBody] MpesaCallback callback) =>
+{
+    var result = callback.Body.StkCallback;
+    if (result.ResultCode == 0)
+    {
+        // Payment Success
+        var metadata = result.CallbackMetadata.Item;
+        var amount = metadata.FirstOrDefault(i => i.Name == "Amount")?.Value;
+        var receipt = metadata.FirstOrDefault(i => i.Name == "MpesaReceiptNumber")?.Value;
+        var phone = metadata.FirstOrDefault(i => i.Name == "PhoneNumber")?.Value;
+
+        Console.WriteLine($"[PAYMENT SUCCESS] Receipt: {receipt}, Amount: {amount}, Phone: {phone}");
+        // TODO: Update database order status here
+    }
+    else
+    {
+        // Payment Failed / Cancelled
+        Console.WriteLine($"[PAYMENT FAILED] Code: {result.ResultCode}, Desc: {result.ResultDesc}");
+    }
+
+    return Results.Ok(new { status = "received" });
+});
+
 app.MapGet("/invoices", () =>
 {
     // Mock data for now

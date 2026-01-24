@@ -84,8 +84,28 @@ credentials/
 *.key
 *.pem
 *.crt
+*.pfx
+*.p12
 
-# Temporary files
+# Temporary files & Logs
 *.tmp
 *.bak
 *.swp
+finance_logs.txt
+ngrok.exe
+ngrok
+*.log
+
+# Windows specific
+thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Mac specific
+.DS_Store
+
+# Editor directories
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace

@@ -10,15 +10,11 @@ services:
     build: ./core-service
     ports:
       - "8080:8080"
+    env_file:
+      - .env
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql_db:3306/omnidb
       - SPRING_DATA_MONGODB_URI=mongodb://mongo_db:27017/omnillogs
-      - JWT_SECRET=${JWT_SECRET}
-      - SMTP_HOST=${SMTP_HOST}
-      - SMTP_PORT=${SMTP_PORT}
-      - SMTP_USER=${SMTP_USER}
-      - SMTP_PASSWORD=${SMTP_PASSWORD}
-      - GOOGLE_MAPS_API_KEY=${GOOGLE_MAPS_API_KEY}
     depends_on:
       - mysql_db
       - mongo_db
@@ -33,14 +29,11 @@ services:
     container_name: omni_finance
     build: ./finance-service
     ports:
-      - "5000:80"
+      - "5000:8080"
+    env_file:
+      - .env
     environment:
       - ConnectionStrings__DefaultConnection=Server=mysql_db;Database=omnifinance;User=root;Password=${DB_PASSWORD:-9486};
-      - MPESA_CONSUMER_KEY=${MPESA_CONSUMER_KEY}
-      - MPESA_CONSUMER_SECRET=${MPESA_CONSUMER_SECRET}
-      - MPESA_SHORTCODE=${MPESA_SHORTCODE}
-      - MPESA_PASSKEY=${MPESA_PASSKEY}
-      - MPESA_ENV=${MPESA_ENV}
     depends_on:
       - mysql_db
     networks:
@@ -55,10 +48,11 @@ services:
     build: ./realtime-service
     ports:
       - "3000:3000"
+    env_file:
+      - .env
     environment:
       - REDIS_HOST=redis
       - MONGO_URL=mongodb://mongo_db:27017/omnillogs
-      - JWT_SECRET=${JWT_SECRET}
     depends_on:
       - redis
       - mongo_db
@@ -74,6 +68,8 @@ services:
     build: ./ai-service
     ports:
       - "5001:5001"
+    env_file:
+      - .env
     environment:
       - REDIS_HOST=redis
     depends_on:
@@ -90,13 +86,10 @@ services:
     build: ./vendor-portal
     ports:
       - "3001:3000"
+    env_file:
+      - .env
     environment:
       - DATABASE_URL=mysql2://root:${DB_PASSWORD:-9486}@mysql_db:3306/omnivendor
-      - JWT_SECRET=${JWT_SECRET}
-      - SMTP_HOST=${SMTP_HOST}
-      - SMTP_PORT=${SMTP_PORT}
-      - SMTP_USER=${SMTP_USER}
-      - SMTP_PASSWORD=${SMTP_PASSWORD}
     depends_on:
       - mysql_db
     networks:
