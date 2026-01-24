@@ -115,4 +115,15 @@ This platform addresses unique challenges in the Kenyan logistics sector:
 
 **License**: Proprietary  
 **Contact**: info@omnilogistics.ke  | phone Number:+254799543777 | larrykings2002@gmail.com
-**Version**: 1.0.0-Kenya
+**Version<img width="644" height="616" alt="Screenshot 2026-01-24 145923" src="https://github.com/user-attachments/assets/a9bf2bb1-97c4-486c-95aa-b11ff3553469" />
+**: 1.0.0-Kenya
+<img width="1366" height="635" alt="Screenshot 2026-01-24 at 15-02-08 frontend-portal" src="https://github.com/user-attachments/assets/597d89d0-92f4-4695-a6dd-a22b9249ed4f" />
+<img width="1366" height="635" alt="Screenshot 2026-01-24 at 15-01-23 frontend-portal" src="https://github.com/user-attachments/assets/9ba5932d-fb81-49f5-b5fb-3d49ed2593fa" />
+<img width="1366" height="635" alt="Screenshot 2026-01-24 at 15-01-14 frontend-portal" src="https://github.com/user-attachments/assets/4baf1d1c-0ec8-438a-94e9-d9b70e6758e1" />
+<img width="1366" height="635" alt="Screenshot 2026-01-24 at 15-01-51 frontend-portal" src="https://github.com/user-attachments/assets/074bf0a1-80f0-4de3-8491-ce097de6f3c3" />
+<img width=<img width="1366" height="635" alt="Screenshot 2026-01-24 at 15-00-28 frontend-portal" src="https://github.com/user-attachments/assets/710d021c-be08-4b2e-b2e1-658de7a86295" />
+<img width="1366" height="635" alt="Screenshot 2026-01-24 at 15-00-49 frontend-portal" src="https://github.com/user-attachments/assets/2edba6f0-d985-458d-a5f7-31e8c817b3d5" />
+<img width="1366" height="646" alt="Screenshot 2026-01-24 at 14-59-44 frontend-portal" src="https://github.com/user-attachments/assets/cadad0ab-9812-47cc-81a3-5bb70ef35de5" />
+<img width="1366" height="635" alt="Screenshot 2026-01-24 at 15-00-05 frontend-portal" src="https://github.com/user-attachments/assets/e5721055-4579-4544-9694-83ef0202ccb5" />
+<img width="1366" height="635" alt="Screenshot 2026-01-24 at 15-00-17 frontend-portal" src="https://github.com/user-attachments/assets/dc84e1a1-76af-49b1-9377-a6b4d6be6ac9" />
+"1366" height="635" alt="Screenshot 2026-01-24 at 15-01-03 frontend-portal" src="https://github.com/user-attachments/assets/6e6ee0d3-2b45-4f7d-a145-d43193ca57ca" />
