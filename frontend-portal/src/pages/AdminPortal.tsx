@@ -65,9 +65,11 @@ export default function AdminPortal() {
     const [showReportModal, setShowReportModal] = useState(false);
     const [selectedReport, setSelectedReport] = useState<string>("");
     const [modalType, setModalType] = useState<"user" | "truck" | "hub">("user");
-    const [editingItem, setEditingItem] = useState<any>(null);
 
-    const [formData, setFormData] = useState<any>({});
+    // Union type for editing item
+    type AdminItem = User | TruckType | Hub;
+    const [editingItem, setEditingItem] = useState<AdminItem | null>(null);
+    const [formData, setFormData] = useState<Partial<User & TruckType & Hub>>({});
 
     // Add new item
     const handleAdd = (type: "user" | "truck" | "hub") => {
@@ -78,7 +80,7 @@ export default function AdminPortal() {
     };
 
     // Edit item
-    const handleEdit = (type: "user" | "truck" | "hub", item: any) => {
+    const handleEdit = (type: "user" | "truck" | "hub", item: AdminItem) => {
         setModalType(type);
         setEditingItem(item);
         setFormData(item);

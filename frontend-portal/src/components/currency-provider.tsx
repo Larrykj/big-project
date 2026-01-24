@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, type ReactNode } from "react";
 
 type Currency = "KSH" | "USD" | "EUR" | "GBP";
 
@@ -40,6 +40,7 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useCurrency() {
   const context = useContext(CurrencyContext);
   if (!context) throw new Error("useCurrency must be used within CurrencyProvider");

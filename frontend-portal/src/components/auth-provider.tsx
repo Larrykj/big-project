@@ -92,7 +92,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                 name: userData.name,
                 role: userData.role.toLowerCase() as UserRole,
             });
-        } catch (error) {
+        } catch {
             // Fallback to demo users if backend is offline
             console.warn("Backend offline, using demo authentication");
             await new Promise((resolve) => setTimeout(resolve, 500));
@@ -132,6 +132,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useAuth() {
     const context = useContext(AuthContext);
     if (!context) {

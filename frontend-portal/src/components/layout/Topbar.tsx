@@ -1,13 +1,20 @@
-import { Bell, Search, Menu, X } from "lucide-react";
+import { Bell, Search, Menu } from "lucide-react";
 import { useState } from "react";
 import { useTheme } from "../theme-provider";
 import { useCurrency } from "../currency-provider";
 import { useAuth } from "../auth-provider";
 
+interface SearchResult {
+    type: string;
+    id: string;
+    detail: string;
+    status: string;
+}
+
 export function Topbar() {
     const [showNotifications, setShowNotifications] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
-    const [searchResults, setSearchResults] = useState<any[]>([]);
+    const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
     const { theme } = useTheme();
     const { currency } = useCurrency();
     const { user } = useAuth();
@@ -78,8 +85,8 @@ export function Topbar() {
                                                 <span className="font-medium">{result.id}</span>
                                             </div>
                                             <span className={`text-xs px-2 py-0.5 rounded ${result.status === 'Delivered' || result.status === 'Paid' ? 'bg-green-500/10 text-green-500' :
-                                                    result.status === 'Available' ? 'bg-blue-500/10 text-blue-500' :
-                                                        'bg-yellow-500/10 text-yellow-500'
+                                                result.status === 'Available' ? 'bg-blue-500/10 text-blue-500' :
+                                                    'bg-yellow-500/10 text-yellow-500'
                                                 }`}>
                                                 {result.status}
                                             </span>

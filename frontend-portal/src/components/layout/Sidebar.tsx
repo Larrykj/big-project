@@ -7,7 +7,7 @@ import { useAuth } from "../auth-provider";
 export function Sidebar() {
     const location = useLocation();
     const { theme, setTheme } = useTheme();
-    const { user, logout, hasRole } = useAuth();
+    const { user, logout } = useAuth();
 
     const isActive = (path: string) => location.pathname === path;
 
