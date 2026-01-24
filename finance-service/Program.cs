@@ -1,8 +1,24 @@
+using OmniFinance;
+using Microsoft.AspNetCore.Mvc;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddHttpClient<MpesaService>();
+// Allow CORS for frontend
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
+
+app.UseCors();
 
 // app.UseHttpsRedirection(); // Disable for internal docker comms usually
 
@@ -12,6 +28,19 @@ var summaries = new[]
 };
 
 app.MapGet("/", () => "OmniLogistics Finance Service is Running! [.NET 8]");
+
+app.MapPost("/api/mpesa/pay", async ([FromBody] PaymentRequest req, MpesaService mpesa) =>
+{
+    try
+    {
+        var result = await mpesa.TriggerStkPushAsync(req.PhoneNumber, req.Amount, req.Reference);
+        return Results.Ok(result);
+    }
+    catch (Exception ex)
+    {
+        return Results.BadRequest(new { error = ex.Message });
+    }
+});
 
 app.MapGet("/invoices", () =>
 {
@@ -34,3 +63,6 @@ record WeatherForecast(DateOnly Date, int TemperatureC, string Summary)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }
+
+record PaymentRequest(string PhoneNumber, decimal Amount, string Reference);
+

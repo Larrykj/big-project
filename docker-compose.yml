@@ -13,6 +13,12 @@ services:
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql_db:3306/omnidb
       - SPRING_DATA_MONGODB_URI=mongodb://mongo_db:27017/omnillogs
+      - JWT_SECRET=${JWT_SECRET}
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - GOOGLE_MAPS_API_KEY=${GOOGLE_MAPS_API_KEY}
     depends_on:
       - mysql_db
       - mongo_db
@@ -29,7 +35,12 @@ services:
     ports:
       - "5000:80"
     environment:
-      - ConnectionStrings__DefaultConnection=Server=mysql_db;Database=omnifinance;User=root;Password=${DB_PASSWORD:-changeme};
+      - ConnectionStrings__DefaultConnection=Server=mysql_db;Database=omnifinance;User=root;Password=${DB_PASSWORD:-9486};
+      - MPESA_CONSUMER_KEY=${MPESA_CONSUMER_KEY}
+      - MPESA_CONSUMER_SECRET=${MPESA_CONSUMER_SECRET}
+      - MPESA_SHORTCODE=${MPESA_SHORTCODE}
+      - MPESA_PASSKEY=${MPESA_PASSKEY}
+      - MPESA_ENV=${MPESA_ENV}
     depends_on:
       - mysql_db
     networks:
@@ -47,6 +58,7 @@ services:
     environment:
       - REDIS_HOST=redis
       - MONGO_URL=mongodb://mongo_db:27017/omnillogs
+      - JWT_SECRET=${JWT_SECRET}
     depends_on:
       - redis
       - mongo_db
@@ -79,7 +91,12 @@ services:
     ports:
       - "3001:3000"
     environment:
-      - DATABASE_URL=mysql2://root:${DB_PASSWORD:-changeme}@mysql_db:3306/omnivendor
+      - DATABASE_URL=mysql2://root:${DB_PASSWORD:-9486}@mysql_db:3306/omnivendor
+      - JWT_SECRET=${JWT_SECRET}
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
     depends_on:
       - mysql_db
     networks:
@@ -106,7 +123,7 @@ services:
     image: mysql:8.0
     container_name: omni_mysql
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-changeme}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-9486}
       MYSQL_DATABASE: omnidb
     ports:
       - "3307:3306" # Mapped to 3307 to avoid conflict with local MySQL
