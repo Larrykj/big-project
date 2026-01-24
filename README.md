@@ -114,5 +114,5 @@ This platform addresses unique challenges in the Kenyan logistics sector:
 ---
 
 **License**: Proprietary  
-**Contact**: info@omnilogistics.ke  
+**Contact**: info@omnilogistics.ke  | phone Number:+254799543777 | larrykings2002@gmail.com
 **Version**: 1.0.0-Kenya
