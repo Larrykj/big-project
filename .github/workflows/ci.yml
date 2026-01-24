@@ -100,3 +100,5 @@ jobs:
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: 'trivy-results.sarif'
+          
+      # End of CI Workflow - Updated CodeQL to v3
