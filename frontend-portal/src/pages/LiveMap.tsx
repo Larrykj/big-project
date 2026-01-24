@@ -37,7 +37,7 @@ export default function LiveMap() {
         }
         setIsScanning(false);
       }, 1500); // Artificial delay for effect
-    } catch (error) {
+    } catch {
       toast.error("AI Service Offline", {
         id: toastId,
         description: "Could not connect to Python Analysis Engine",

@@ -33,11 +33,12 @@ export default function Finance() {
                 description: `Check your phone (${phoneNumber}) for the M-Pesa prompt. Amount: KSH ${amount}`,
                 duration: 8000,
             });
-        } catch (error: any) {
-            console.error("M-Pesa Error:", error.response?.data || error.message);
+        } catch (error) {
+            const err = error as { response?: { data?: { error?: string } }, message?: string };
+            console.error("M-Pesa Error:", err.response?.data || err.message);
             toast.error("Payment Failed", {
                 id: toastId,
-                description: error.response?.data?.error || "Could not reach Safaricom Gateway.",
+                description: err.response?.data?.error || "Could not reach Safaricom Gateway.",
             });
         } finally {
             setLoadingId(null);
@@ -61,7 +62,7 @@ export default function Finance() {
                     </button>
                     <select
                         value={currency}
-                        onChange={(e) => setCurrency(e.target.value as any)}
+                        onChange={(e) => setCurrency(e.target.value as "KSH" | "USD" | "EUR" | "GBP")}
                         className="inline-flex items-center rounded-md border border-input bg-background px-3 py-2 text-sm"
                     >
                         <option value="KSH">KSH</option>

@@ -110,10 +110,10 @@ export default function AdminPortal() {
             }
 
             if (editingItem) {
-                setUsers(users.map(u => u.id === editingItem.id ? { ...u, ...formData } : u));
+                setUsers(users.map(u => u.id === editingItem.id ? { ...u, ...formData } as User : u));
                 toast.success("User updated successfully!");
             } else {
-                const newUser = { id: users.length + 1, ...formData, status: formData.status || "Active" };
+                const newUser = { id: users.length + 1, ...formData, status: formData.status || "Active" } as User;
                 setUsers([...users, newUser]);
                 toast.success("User added successfully!");
             }
@@ -126,10 +126,10 @@ export default function AdminPortal() {
             }
 
             if (editingItem) {
-                setTrucks(trucks.map(t => t.id === editingItem.id ? { ...t, ...formData } : t));
+                setTrucks(trucks.map(t => t.id === editingItem.id ? { ...t, ...formData } as TruckType : t));
                 toast.success("Truck updated successfully!");
             } else {
-                const newTruck = { id: trucks.length + 1, ...formData, status: formData.status || "Available" };
+                const newTruck = { id: trucks.length + 1, ...formData, status: formData.status || "Available" } as TruckType;
                 setTrucks([...trucks, newTruck]);
                 toast.success("Truck added successfully!");
             }
@@ -142,14 +142,15 @@ export default function AdminPortal() {
             }
 
             if (editingItem) {
-                setHubs(hubs.map(h => h.id === editingItem.id ? { ...h, ...formData } : h));
+                setHubs(hubs.map(h => h.id === editingItem.id ? { ...h, ...formData } as Hub : h));
                 toast.success("Hub updated successfully!");
             } else {
-                const newHub = { id: hubs.length + 1, ...formData, status: formData.status || "Operational", trucks: 0 };
+                const newHub = { id: hubs.length + 1, ...formData, status: formData.status || "Operational", trucks: 0 } as Hub;
                 setHubs([...hubs, newHub]);
                 toast.success("Hub added successfully!");
             }
         }
+
 
         setShowModal(false);
         setFormData({});
@@ -274,7 +275,7 @@ export default function AdminPortal() {
                 ].map((tab) => (
                     <button
                         key={tab.key}
-                        onClick={() => setActiveTab(tab.key as any)}
+                        onClick={() => setActiveTab(tab.key as "users" | "trucks" | "hubs" | "roles" | "reports" | "logs" | "settings")}
                         className={`px-4 py-2 font-medium transition-colors whitespace-nowrap rounded-t-lg ${activeTab === tab.key
                             ? "bg-primary/10 text-primary border-b-2 border-primary"
                             : "text-muted-foreground hover:text-foreground hover:bg-accent"
@@ -601,7 +602,7 @@ export default function AdminPortal() {
                                         <p className="text-sm text-muted-foreground">{desc}</p>
                                     </div>
                                     <button
-                                        onClick={() => toggleSetting(key as any)}
+                                        onClick={() => toggleSetting(key as keyof typeof settings)}
                                         className={`relative w-12 h-6 rounded-full transition-all shadow-inner ${settings[key as keyof typeof settings] ? "bg-primary" : "bg-muted-foreground/30"
                                             }`}
                                     >

@@ -92,12 +92,12 @@ export const ordersApi = {
         return response.data;
     },
 
-    create: async (order: any) => {
+    create: async (order: Record<string, unknown>) => {
         const response = await api.post('/api/orders', order);
         return response.data;
     },
 
-    update: async (id: number, order: any) => {
+    update: async (id: number, order: Record<string, unknown>) => {
         const response = await api.put(`/api/orders/${id}`, order);
         return response.data;
     },
@@ -130,12 +130,12 @@ export const trucksApi = {
         return response.data;
     },
 
-    create: async (truck: any) => {
+    create: async (truck: Record<string, unknown>) => {
         const response = await api.post('/api/trucks', truck);
         return response.data;
     },
 
-    update: async (id: number, truck: any) => {
+    update: async (id: number, truck: Record<string, unknown>) => {
         const response = await api.put(`/api/trucks/${id}`, truck);
         return response.data;
     },
@@ -217,7 +217,7 @@ export const realtimeApi = {
         return response.data;
     },
 
-    updateTruckPosition: async (plateNumber: string, position: any) => {
+    updateTruckPosition: async (plateNumber: string, position: { lat: number; lng: number }) => {
         const response = await axios.post(`${REALTIME_URL}/api/trucks/${plateNumber}/position`, position);
         return response.data;
     },

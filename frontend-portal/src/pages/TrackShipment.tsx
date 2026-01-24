@@ -1,9 +1,26 @@
 import { useState } from "react";
 import { Search, Package } from "lucide-react";
 
+interface TimelineEvent {
+    status: string;
+    date: string;
+    completed: boolean;
+    active?: boolean;
+}
+
+interface Shipment {
+    id: string;
+    from: string;
+    to: string;
+    status: string;
+    currentLocation: string;
+    progress: number;
+    timeline: TimelineEvent[];
+}
+
 export default function TrackShipment() {
     const [trackingNumber, setTrackingNumber] = useState("");
-    const [shipment, setShipment] = useState<any>(null);
+    const [shipment, setShipment] = useState<Shipment | null>(null);
 
     const handleTrack = () => {
         setShipment({
@@ -89,13 +106,13 @@ export default function TrackShipment() {
                     <div className="rounded-lg border bg-card p-6">
                         <h3 className="font-semibold mb-4">Shipment Timeline</h3>
                         <div className="space-y-4">
-                            {shipment.timeline.map((event: any, index: number) => (
+                            {shipment.timeline.map((event: TimelineEvent, index: number) => (
                                 <div key={index} className="flex gap-4">
                                     <div className="flex flex-col items-center">
                                         <div
                                             className={`h-3 w-3 rounded-full transition-all ${event.completed
-                                                    ? "bg-primary"
-                                                    : "bg-muted border-2 border-muted-foreground"
+                                                ? "bg-primary"
+                                                : "bg-muted border-2 border-muted-foreground"
                                                 } ${event.active ? "ring-4 ring-primary/20 animate-pulse" : ""}`}
                                         />
                                         {index < shipment.timeline.length - 1 && (
