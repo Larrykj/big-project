@@ -91,6 +91,17 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v3
+
+      - name: Setup Java 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Warm Maven dependency cache for Trivy
+        run: |
+          cd core-service
+          mvn -q dependency:go-offline
       
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
