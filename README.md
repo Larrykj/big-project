@@ -1,6 +1,8 @@
 # OmniLogistics Kenya - East Africa Supply Chain Platform
 
-Welcome to **OmniLogistics Kenya**, a next-generation microservices platform designed for high-scale logistics, tracking, and supply chain management across Kenya and East Africa.
+> ⚠️ **Prototype status:** This repository is an active prototype and several integrations are currently simulated or planned rather than production-ready.
+
+Welcome to **OmniLogistics Kenya**, a microservices platform prototype for logistics, tracking, and supply chain management across Kenya and East Africa.
 
 ## 🌍 Regional Focus
 
@@ -8,7 +10,7 @@ This platform is specifically designed for:
 - **Primary Market**: Kenya (Nairobi, Mombasa, Kisumu, Nakuru, Eldoret)
 - **Extended Coverage**: Uganda, Tanzania, Rwanda
 - **Currency**: Kenyan Shilling (KSH) with multi-currency support (USD, EUR, GBP)
-- **Payment Integration**: M-Pesa, Bank Transfers, RTGS
+- **Payment Workflows**: Bank transfer flows plus simulated/planned M-Pesa and RTGS support
 
 ## 🏗 Architecture Overview
 
@@ -17,7 +19,7 @@ This project uses a **Polyglot Microservices Architecture**, meaning each servic
 | Service | Language | Tech Stack | Responsibility | Port |
 | :--- | :--- | :--- | :--- | :--- |
 | **core-service** | **Java** | Spring Boot | Central ERP, User Auth, Order Management | 8080 |
-| **finance-service** | **C#** | .NET 8 | Billing, M-Pesa Integration, KRA Reports | 5000 |
+| **finance-service** | **C#** | .NET 8 | Billing, simulated M-Pesa workflow, planned KRA reports | 5000 |
 | **realtime-service** | **Node.js** | Express/Socket.io | Live Map Tracking, WebSocket Notifications | 3000 |
 | **ai-service** | **Python** | FastAPI / TensorFlow | Route Optimization, Traffic Prediction | 5001 |
 | **vendor-portal** | **Ruby** | Rails | Vendor Onboarding, Document Management | 3001 |
@@ -28,10 +30,10 @@ This project uses a **Polyglot Microservices Architecture**, meaning each servic
 
 ### For Kenya Market
 - **Live GPS Tracking**: Real-time vehicle monitoring across major Kenyan highways
-- **M-Pesa Integration**: Native payment processing for KSH transactions
+- **M-Pesa Integration (Simulated)**: Prototype payment flow for KSH transactions
 - **Multi-Currency**: Support for USD, EUR, GBP alongside KSH
-- **KRA Compliance**: Automated tax reporting and invoice generation
-- **SGR Integration**: Support for Standard Gauge Railway logistics
+- **KRA Compliance (Planned)**: Tax reporting and invoice support roadmap
+- **SGR Integration (Planned)**: Standard Gauge Railway logistics support roadmap
 - **Local Routes**: Pre-configured for Nairobi-Mombasa, Nairobi-Kisumu corridors
 
 ### Technical Highlights
@@ -50,7 +52,7 @@ This project uses a **Polyglot Microservices Architecture**, meaning each servic
 ### Installation
 1. Start the backend services:
    ```bash
-   cd OmniLogistics
+   cd big-project
    docker-compose up --build
    ```
 
@@ -80,14 +82,14 @@ The platform includes optimized routes for:
 - **Base Currency**: KSH (Kenyan Shilling)
 - **Exchange Rates**: Auto-updated
 - **Payment Methods**:
-  - M-Pesa (Instant)
-  - Bank Transfer (RTGS/EFT)
+  - M-Pesa (Simulated in prototype)
+  - Bank Transfer (RTGS/EFT, planned integration)
   - Cheque (Corporate clients)
 
 ## 🗓 Development Roadmap
 
 - ✅ **Phase 1**: Core Services (Java + MySQL)
-- ✅ **Phase 2**: Finance Service (C# + M-Pesa)
+- ✅ **Phase 2**: Finance Service scaffold (C# + simulated M-Pesa flow)
 - ✅ **Phase 3**: Frontend Portal (React + Kenya Map)
 - 🔄 **Phase 4**: AI Route Optimization (Python)
 - 📅 **Phase 5**: Mobile App (React Native)
@@ -97,7 +99,7 @@ The platform includes optimized routes for:
 
 Each technology was chosen for a specific reason relevant to the Kenyan market:
 - **Java**: Enterprise-grade reliability for core operations
-- **C#**: Excellent for financial calculations and KRA integration
+- **C#**: Excellent for financial calculations and planned KRA integration
 - **Node.js**: Real-time GPS tracking requires WebSocket efficiency
 - **Python**: AI traffic prediction using Nairobi's complex traffic patterns
 - **React**: Modern, fast UI that works on slow connections
@@ -113,9 +115,8 @@ This platform addresses unique challenges in the Kenyan logistics sector:
 
 ---
 
-**License**: Proprietary  
+**License**: [MIT](./LICENSE)  
 **Contact**: info@omnilogistics.ke  | phone Number:+254799543777 | larrykings2002@gmail.com
-For donations send to patreon on my profile! Thank you
 
 **Version<img width="644" height="616" alt="Screenshot 2026-01-24 145923" src="https://github.com/user-attachments/assets/a9bf2bb1-97c4-486c-95aa-b11ff3553469" />
 **: 1.0.0-Kenya
@@ -128,4 +129,3 @@ For donations send to patreon on my profile! Thank you
 <img width="1366" height="646" alt="Screenshot 2026-01-24 at 14-59-44 frontend-portal" src="https://github.com/user-attachments/assets/cadad0ab-9812-47cc-81a3-5bb70ef35de5" />
 <img width="1366" height="635" alt="Screenshot 2026-01-24 at 15-00-05 frontend-portal" src="https://github.com/user-attachments/assets/e5721055-4579-4544-9694-83ef0202ccb5" />
 <img width="1366" height="635" alt="Screenshot 2026-01-24 at 15-00-17 frontend-portal" src="https://github.com/user-attachments/assets/dc84e1a1-76af-49b1-9377-a6b4d6be6ac9" />
-

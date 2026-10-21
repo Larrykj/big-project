@@ -25,7 +25,7 @@
 #### 4. **Project Documentation**
 - ✅ **CHANGELOG.md** - Version history
 - ✅ **README.md** - Already exists (comprehensive)
-- ✅ **GIT_SETUP.md** - Git instructions
+- ✅ **docs/PROCESS_NOTES.md** - Git/setup process notes
 - ✅ **REALTIME_STATUS.md** - Automation status
 
 #### 5. **GitHub Templates**
