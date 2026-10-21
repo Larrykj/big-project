@@ -24,7 +24,7 @@ Thank you for your interest in contributing! 🎉
 ### Installation
 ```bash
 # Clone the repo
-cd OmniLogistics
+cd big-project
 
 # Start backend services
 docker-compose up -d

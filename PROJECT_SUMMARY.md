@@ -55,7 +55,8 @@ OmniLogistics/
 ├── 📄 LICENSE                 (MIT License)
 ├── 📄 .gitignore              (Git exclusions)
 ├── 📄 .env.example            (Environment template)
-├── 📄 GIT_SETUP.md            (Git instructions)
+├── 📂 docs/
+│   └── 📄 PROCESS_NOTES.md      (Git/setup process notes)
 ├── 📄 REALTIME_STATUS.md      (Feature status)
 └── 📄 QA_CHECKLIST.md         (Quality assurance)
 ```

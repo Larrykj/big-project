@@ -61,7 +61,7 @@ Tech stack: Java, C#, Node.js, Python, Ruby, C++, React, TypeScript, Docker
 **Demo the Project:**
 ```bash
 # Start all services
-cd OmniLogistics
+cd big-project
 docker-compose up
 
 # Show frontend only (fastest)
